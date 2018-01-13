@@ -33,14 +33,12 @@ public class UserResource {
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response Login(UserModel user) {
+	@Produces(MediaType.TEXT_PLAIN)
+	public String Login(UserModel user) {
 		System.out.println("Entered in resource|login.");
 		UserService service = new UserServiceImpl();
-		user = service.doLogin(user);
-		
-		
-		
-		return	Response.status(Status.CREATED).entity(userModel).build();
+		String result = service.doLogin(user);
+		return	result;
 		
 	}
 }

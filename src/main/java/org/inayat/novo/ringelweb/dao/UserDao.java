@@ -5,4 +5,6 @@ import org.inayat.novo.ringelweb.model.UserModel;
 public  interface UserDao {
 	
 	public UserModel doSave(UserModel model);
+
+	public String doAuthenticate(UserModel userModel);
 }

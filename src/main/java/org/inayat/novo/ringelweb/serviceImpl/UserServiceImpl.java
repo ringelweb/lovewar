@@ -8,28 +8,19 @@ import org.inayat.novo.ringelweb.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public UserModel doRegister(UserModel user) {
+	public UserModel doRegister(UserModel userModel) {
 		System.out.println("Entered in userSignUpServiceImpl:doRegister.");
-		UserModel model=new UserModel();
 	    UserDao dao=new UserDaoImpl();
-		model.setFname(user.getFname());
-		model.setLname(user.getLname());
-		model.setUsername(user.getUsername());
-		model.setPassword(user.getPassword());
-		model.setEmail(user.getEmail());
-		model.setMobile(user.getMobile());
-		model.setUserMessage(user.getUserMessage());
-		model.setException(user.getException());
-		model.setUserType(user.getUserType());
-		model.setFeedback(user.getFeedback());
-	    model=dao.doSave(model);
-		return model;
+	    userModel=dao.doSave(userModel);
+		return userModel;
 	}
 
 	@Override
-	public UserModel doLogin(UserModel user) {
-		// TODO Auto-generated method stub
-		return null;
+	public String doLogin(UserModel userModel) {
+		System.out.println("Entered in userSignUpServiceImpl:dologin.");
+		 UserDao dao=new UserDaoImpl();
+		  String result=dao.doAuthenticate(userModel);
+         return result;
 	}
 	
 	
