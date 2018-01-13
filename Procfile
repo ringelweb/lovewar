@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* helloWorld
+web: java -Dserver.port=$PORT -jar target/untitled-1.0-SNAPSHOT.jar
