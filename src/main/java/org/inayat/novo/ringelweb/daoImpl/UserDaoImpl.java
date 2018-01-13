@@ -42,7 +42,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public String doAuthenticate(UserModel userModel) {
-		 Connection con=DBConnection.connect();
+		
+		
+		Connection con=DBConnection.connect();
 		String userid= userModel.getUsername();
 		String password=userModel.getPassword();
 		 try {
