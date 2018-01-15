@@ -34,7 +34,7 @@ public class UserResource {
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String Login(UserModel user) {
+	public String login(UserModel user) {
 		System.out.println("Entered in resource|login.");
 		UserService service = new UserServiceImpl();
 		String result = service.doLogin(user);
