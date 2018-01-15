@@ -11,6 +11,7 @@ public class DBConnection implements DBCredentials {
 		Class.forName(DRIVER);  
 		System.out.println("connecting to DB................");
 		con=DriverManager.getConnection(DBURL,USER,PASSWORD);
+		System.out.println("db Connected");
 		}catch(Exception e) {
 			System.out.println(e);
 		}
