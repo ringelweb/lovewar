@@ -20,7 +20,11 @@ public class UserServiceImpl implements UserService {
 		System.out.println("Entered in userSignUpServiceImpl:dologin.");
 		 UserDao dao=new UserDaoImpl();
 		  String result=dao.doAuthenticate(userModel);
+		  
+		  if(result!=null && result!="") {
          return result;
+         }
+		  else return "Error in DB connection.";
 	}
 	
 	

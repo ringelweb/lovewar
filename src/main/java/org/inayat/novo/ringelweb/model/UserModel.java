@@ -9,7 +9,7 @@ private String email;
 private	String mobile;
 private	String feedback;
 private String userType;
-private String userMessage;
+private String returnedMsg;
 private String exception;
 
 public String getException() {
@@ -18,11 +18,12 @@ public String getException() {
 public void setException(String exception) {
 	this.exception = exception;
 }
-public String getUserMessage() {
-	return userMessage;
+
+public String getReturnedMsg() {
+	return returnedMsg;
 }
-public void setUserMessage(String userMessage) {
-	this.userMessage = userMessage;
+public void setReturnedMsg(String returnedMsg) {
+	this.returnedMsg = returnedMsg;
 }
 public String getFname() {
 	return fname;

@@ -7,8 +7,8 @@ public interface DBCredentials {
 	    String USER = "root";
 	    String PASSWORD = "";*/
 	
-	    String DBURL = "jdbc:mysql://databases.000webhost.com/id3681939_loversdb";
+	 String DBURL = "jdbc:mysql://myloversdb.cuaexxrzuxp9.us-east-1.rds.amazonaws.com:3306/loversdb";
 	    String DRIVER = "com.mysql.jdbc.Driver";
-	    String USER = "id3681939_lover";
-	    String PASSWORD = "lover";
+	    String USER = "lover";
+	    String PASSWORD = "lover123";
 }

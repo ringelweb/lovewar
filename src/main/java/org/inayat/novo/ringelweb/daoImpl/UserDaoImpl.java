@@ -27,15 +27,17 @@ public class UserDaoImpl implements UserDao {
 			int i=stmt.executeUpdate();
 			if(i>0) 
 			{
-			model.setUserMessage("success");
+			model.setReturnedMsg("success");
+			model.setException("No Exception");
 			}
 			con.close(); 
 			return model;  
 			}
 		   catch(Exception e){ 
 			   System.out.println(e);
-			   model.setException(e.toString());
+			   model.setException("Exception occur in Signup::"+e.toString());
 		 } 
+		model.setReturnedMsg("Somethiing wrong saving DATA......");
 		return model;
 		
 	}
