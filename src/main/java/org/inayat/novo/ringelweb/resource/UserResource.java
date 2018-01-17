@@ -7,12 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import org.inayat.novo.ringelweb.model.GfBfDataModel;
 import org.inayat.novo.ringelweb.model.UserModel;
-import org.inayat.novo.ringelweb.service.GfBfService;
 import org.inayat.novo.ringelweb.service.UserService;
-import org.inayat.novo.ringelweb.serviceImpl.GfBfServiceImpl;
 import org.inayat.novo.ringelweb.serviceImpl.UserServiceImpl;
 
 

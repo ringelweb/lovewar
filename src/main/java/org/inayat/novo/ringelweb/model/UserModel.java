@@ -1,6 +1,5 @@
 package org.inayat.novo.ringelweb.model;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Entity;
