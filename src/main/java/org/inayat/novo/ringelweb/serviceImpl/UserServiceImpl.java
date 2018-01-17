@@ -1,4 +1,5 @@
 package org.inayat.novo.ringelweb.serviceImpl;
+import java.util.Date;
 
 import org.inayat.novo.ringelweb.dao.UserDao;
 import org.inayat.novo.ringelweb.daoImpl.UserDaoImpl;
@@ -11,20 +12,17 @@ public class UserServiceImpl implements UserService {
 	public UserModel doRegister(UserModel userModel) {
 		System.out.println("Entered in userSignUpServiceImpl:doRegister.");
 	    UserDao dao=new UserDaoImpl();
+		userModel.setCreatedon(new Date());
 	    userModel=dao.doSave(userModel);
 		return userModel;
 	}
 
 	@Override
-	public String doLogin(UserModel userModel) {
+	public UserModel doLogin(UserModel userModel) {
 		System.out.println("Entered in userSignUpServiceImpl:dologin.");
 		 UserDao dao=new UserDaoImpl();
-		  String result=dao.doAuthenticate(userModel);
-		  
-		  if(result!=null && result!="") {
-         return result;
-         }
-		  else return "Error in DB connection.";
+		  UserModel result=dao.doAuthenticate(userModel);
+		return result;
 	}
 	
 	

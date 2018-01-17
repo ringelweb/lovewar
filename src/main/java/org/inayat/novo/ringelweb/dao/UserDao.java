@@ -6,5 +6,11 @@ public  interface UserDao {
 	
 	public UserModel doSave(UserModel model);
 
-	public String doAuthenticate(UserModel userModel);
+	public UserModel doAuthenticate(UserModel userModel);
+	
+
+	public UserModel getUserDataByUserId(int id);
+	
+	
+	
 }

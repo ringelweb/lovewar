@@ -1,6 +1,20 @@
 package org.inayat.novo.ringelweb.model;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Entity;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity(name = "user_table")
+@Table(name = "user_table")
 public class UserModel {
+	
+@Id
+private int id;	
 private	String fname;
 private	String lname;
 private String username;
@@ -11,19 +25,14 @@ private	String feedback;
 private String userType;
 private String returnedMsg;
 private String exception;
+private Date createdon;
+private Boolean success;
 
-public String getException() {
-	return exception;
+public int getId() {
+	return id;
 }
-public void setException(String exception) {
-	this.exception = exception;
-}
-
-public String getReturnedMsg() {
-	return returnedMsg;
-}
-public void setReturnedMsg(String returnedMsg) {
-	this.returnedMsg = returnedMsg;
+public void setId(int id) {
+	this.id = id;
 }
 public String getFname() {
 	return fname;
@@ -72,6 +81,30 @@ public String getUserType() {
 }
 public void setUserType(String userType) {
 	this.userType = userType;
+}
+public String getReturnedMsg() {
+	return returnedMsg;
+}
+public void setReturnedMsg(String returnedMsg) {
+	this.returnedMsg = returnedMsg;
+}
+public String getException() {
+	return exception;
+}
+public void setException(String exception) {
+	this.exception = exception;
+}
+public Date getCreatedon() {
+	return createdon;
+}
+public void setCreatedon(Date createdon) {
+	this.createdon = createdon;
+}
+public Boolean getSuccess() {
+	return success;
+}
+public void setSuccess(Boolean success) {
+	this.success = success;
 }
 
 }
