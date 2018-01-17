@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDao {
 		 * e.printStackTrace(); } return null;
 		 */
 
-		SessionFactory factory = new Configuration().configure("/resources/hibernate.cfg.xml").addAnnotatedClass(UserModel.class).buildSessionFactory();
+		SessionFactory factory = new Configuration().configure().addAnnotatedClass(UserModel.class).buildSessionFactory();
 		Session session = factory.openSession();
 		
 		try {
@@ -109,7 +109,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserModel getUserDataByUserId(int id) {
-		SessionFactory factory = new Configuration().configure("/resources/hibernate.cfg.xml").buildSessionFactory();
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 		UserModel model = new UserModel();
 		try {
