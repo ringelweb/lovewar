@@ -1,4 +1,4 @@
-package org.inayat.novo.ringelweb.daoImpl;
+/*package org.inayat.novo.ringelweb.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -82,3 +82,4 @@ public String getUserIdFromUserName(UserModel userModel) {
 }
 
 }
+*/

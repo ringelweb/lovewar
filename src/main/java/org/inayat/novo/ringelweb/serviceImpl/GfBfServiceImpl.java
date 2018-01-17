@@ -1,4 +1,4 @@
-package org.inayat.novo.ringelweb.serviceImpl;
+/*package org.inayat.novo.ringelweb.serviceImpl;
 
 import org.inayat.novo.ringelweb.dao.GfBfDao;
 import org.inayat.novo.ringelweb.daoImpl.GfBfDaoImpl;
@@ -17,3 +17,4 @@ public class GfBfServiceImpl  implements GfBfService{
 	}
 
 }
+*/

@@ -1,4 +1,4 @@
-package org.inayat.novo.ringelweb.model;
+/*package org.inayat.novo.ringelweb.model;
 
 public class GfBfDataModel {
 	private String id;
@@ -76,3 +76,4 @@ public class GfBfDataModel {
 	}
 
 }
+*/
