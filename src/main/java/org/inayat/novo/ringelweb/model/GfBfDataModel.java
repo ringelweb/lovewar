@@ -1,16 +1,21 @@
-/*package org.inayat.novo.ringelweb.model;
+package org.inayat.novo.ringelweb.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity(name = "gfbfdata_table")
+@Table(name = "gfbfdata_table")
 public class GfBfDataModel {
 	private String id;
 	private String name;
-	private int age;
+	private int    age;
 	private String sex;
-	private String location;
 	private String whatsappno;
 	private String returnedmsg;
 	private String exception;
+	private Boolean success;
 	
-
+	
 	public String getException() {
 		return exception;
 	}
@@ -59,14 +64,6 @@ public class GfBfDataModel {
 		this.sex = sex;
 	}
 
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
 	public String getWhatsappno() {
 		return whatsappno;
 	}
@@ -75,5 +72,12 @@ public class GfBfDataModel {
 		this.whatsappno = whatsappno;
 	}
 
+	public Boolean getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(Boolean success) {
+		this.success = success;
+	}
+
 }
-*/

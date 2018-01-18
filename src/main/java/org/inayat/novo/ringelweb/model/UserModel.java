@@ -11,17 +11,17 @@ import javax.persistence.Table;
 @Entity(name = "user_table")
 @Table(name = "user_table")
 public class UserModel {
-	
 @Id
 private int id;	
 private	String fname;
 private	String lname;
 private String username;
 private String password;
-private String email;
+private String email; 
 private	String mobile;
 private	String feedback;
 private String userType;
+private String secretans;
 private String returnedMsg;
 private String exception;
 private Date createdon;
@@ -104,6 +104,12 @@ public Boolean getSuccess() {
 }
 public void setSuccess(Boolean success) {
 	this.success = success;
+}
+public String getSecretans() {
+	return secretans;
+}
+public void setSecretans(String secretans) {
+	this.secretans = secretans;
 }
 
 }

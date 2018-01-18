@@ -10,6 +10,8 @@ public  interface UserDao {
 	
 
 	public UserModel getUserDataByUserId(int id);
+
+	public String getPasswod(String username,String secretans);
 	
 	
 	

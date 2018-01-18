@@ -24,6 +24,13 @@ public class UserServiceImpl implements UserService {
 		  UserModel result=dao.doAuthenticate(userModel);
 		return result;
 	}
+
+	@Override
+	public String getPassword(String username,String secretans) {
+		 UserDao dao=new UserDaoImpl();
+		String result=dao.getPasswod(username,secretans);
+		return result;
+	}
 	
 	
 
