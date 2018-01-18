@@ -1,6 +1,5 @@
 package org.inayat.novo.ringelweb.daoImpl;
 
-import java.sql.Connection;
 
 import java.util.List;
 
@@ -12,7 +11,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import org.inayat.novo.ringelweb.dao.UserDao;
-import org.inayat.novo.ringelweb.database.DBConnection;
 import org.inayat.novo.ringelweb.model.UserModel;
 
 public class UserDaoImpl implements UserDao {
@@ -37,8 +35,6 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@Override
 	public UserModel doAuthenticate(UserModel userModel) {
-
-		Connection con = DBConnection.connect();
 		String userid = userModel.getUsername();
 		String password = userModel.getPassword();
 		/*
