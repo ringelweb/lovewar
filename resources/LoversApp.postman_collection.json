@@ -1,0 +1,103 @@
+{
+	"variables": [],
+	"info": {
+		"name": "LoversApp",
+		"_postman_id": "c78998ca-6d65-28ed-2ac0-eb458b2ada1a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/ringelweb/webapi/user/login",
+			"request": {
+				"url": "https://lovewar.herokuapp.com/webapi/user/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Transfer-Encoding",
+						"value": "chunked",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"inayat\",\n    \"username\": \"inayat\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/ringelweb/webapi/user/signup",
+			"request": {
+				"url": "http://localhost:8080/ringelweb/webapi/user/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n\t\"username\":\"saurabh\",\n\t\"password\":\"saurabh\",\n\t\"fname\":\"rahul\",\n\t\"lname\":\"verma\",\n\t\"mobile\":\"99999999999\",\n\t\"email\":\"rahul@gmail.com\",\n\t\"userType\":\"beginer\",\n\t\"secretans\":\"babu\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/ringelweb/webapi/user/forgepassword",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/ringelweb/webapi/user/forgepassword?secretans=babu&username=madan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ringelweb",
+						"webapi",
+						"user",
+						"forgepassword"
+					],
+					"query": [
+						{
+							"key": "secretans",
+							"value": "babu",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "username",
+							"value": "madan",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "app",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
