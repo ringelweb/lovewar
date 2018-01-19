@@ -61,7 +61,7 @@ public class UserResource {
 	
 	
 	@GET
-	@Path("/forgepassword")
+	@Path("/forgetpassword")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String forgetPassword(@QueryParam("username")String username, @QueryParam("secretans")String secretans) {
 		System.out.println("Entered in resource|forgetPassword.");
