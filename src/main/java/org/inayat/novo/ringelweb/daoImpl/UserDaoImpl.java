@@ -10,12 +10,13 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import org.inayat.novo.ringelweb.dao.UserDao;
+import org.inayat.novo.ringelweb.model.FaqModel;
+import org.inayat.novo.ringelweb.model.GfBfDataModel;
 import org.inayat.novo.ringelweb.model.UserModel;
 
 public class UserDaoImpl implements UserDao {
 
-	
-	//login
+	// login
 	@Override
 	public UserModel doAuthenticate(UserModel userModel) {
 		SessionFactory factory = new Configuration().configure().addAnnotatedClass(UserModel.class)
@@ -42,7 +43,7 @@ public class UserDaoImpl implements UserDao {
 				userModel.setException("No exception");
 				return userModel;
 			}
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			if (session.getTransaction() != null) {
 				session.getTransaction().rollback();
 				userModel.setException(e.toString());
@@ -57,10 +58,7 @@ public class UserDaoImpl implements UserDao {
 		return userModel;
 	}
 
-	
-	
-	
-	//registration
+	// registration
 	public UserModel doSave(UserModel model) {
 		System.out.println("Entered in userDaoImpl:doSave.");
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -68,7 +66,16 @@ public class UserDaoImpl implements UserDao {
 		session.beginTransaction();
 
 		try {
-			session.save(model);
+			if (model.getId() > 0) {
+				System.out.println("Entered in userDaoImpl:doSave|saveOrUpdate");
+				session.saveOrUpdate(model);
+			} else {
+				System.out.println("Entered in userDaoImpl:doSave|save");
+			Integer	generatedId =(Integer) session.save(model);
+				model.setId(generatedId);
+			}
+			
+
 			session.getTransaction().commit();
 			model.setSuccess(true);
 		} catch (Exception e) {
@@ -83,10 +90,6 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	
-	
-	
-	
 	@Override
 	public UserModel getUserDataByUserId(int id) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -103,7 +106,7 @@ public class UserDaoImpl implements UserDao {
 			List<UserModel> list = query.list();
 			return list.get(0);
 
-		} catch (HibernateException e) {
+		} catch (Exception e) {
 			if (session.getTransaction() != null) {
 				session.getTransaction().rollback();
 				model.setException(e.toString());
@@ -116,14 +119,8 @@ public class UserDaoImpl implements UserDao {
 		return model;
 	}
 
-
-
-
-
-
-
 	@Override
-	public String getPasswod(String username,String secretans) {
+	public String getPasswod(String username, String secretans) {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 		String password = null;
@@ -133,11 +130,11 @@ public class UserDaoImpl implements UserDao {
 			String hql = "select password from user_table where username = :username OR mobile = :username OR email = :username and secretans = :secretans";
 			System.out.println(hql);
 			Query query = session.createQuery(hql);
-			query.setParameter("username",username);
-			query.setParameter("secretans",secretans);
+			query.setParameter("username", username);
+			query.setParameter("secretans", secretans);
 			List<String> list = query.list();
-			password=list.get(0);
-            return password;
+			password = list.get(0);
+			return password;
 		} catch (HibernateException e) {
 			if (session.getTransaction() != null) {
 				session.getTransaction().rollback();
@@ -149,5 +146,66 @@ public class UserDaoImpl implements UserDao {
 		return password;
 	}
 
+	@Override
+	public GfBfDataModel saveGfBfData(GfBfDataModel gfBfDataModel) {
+		System.out.println("Entered in userDaoImpl:saveGfBfData.");
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		session.beginTransaction();
+ 
+		try {
+			if (gfBfDataModel.getId() 	> 0) {
+				System.out.println("Entered in userDaoImpl:doSavegfbfdata|saveOrUpdate");
+				session.saveOrUpdate(gfBfDataModel);
+			} else {
+				System.out.println("Entered in userDaoImpl:doSavegfbfdata|save");
+				Integer	generatedId = (Integer) session.save(gfBfDataModel);
+				gfBfDataModel.setId(generatedId);
+			}
+
+			session.getTransaction().commit();
+			gfBfDataModel.setSuccess(true);
+
+		} catch (Exception e) {
+			gfBfDataModel.setSuccess(false);
+			gfBfDataModel.setException(e.toString());
+			gfBfDataModel.setReturnedmsg("caught exception-" + e.toString());
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return gfBfDataModel;
+
+	}
+
+	@Override
+	public List<FaqModel> getFaq() {
+		
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		UserModel model = new UserModel();
+		List<FaqModel> list=null;
+		try {
+			session.beginTransaction();
+
+			String hql = "from faq_table";
+			System.out.println(hql);
+			Query query = session.createQuery(hql);
+			list = query.list();
+			return list;
+
+		} catch (Exception e) {
+			if (session.getTransaction() != null) {
+				session.getTransaction().rollback();
+				model.setException(e.toString());
+				model.setReturnedMsg("Error getting result");
+				return list;
+			}
+		} finally {
+			session.close();
+		}
+		return list;
+	
+	}
 
 }

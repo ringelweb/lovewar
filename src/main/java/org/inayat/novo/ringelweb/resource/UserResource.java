@@ -1,5 +1,8 @@
 package org.inayat.novo.ringelweb.resource;
 
+import java.text.ParseException;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +13,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.inayat.novo.ringelweb.model.CelebrationModel;
+import org.inayat.novo.ringelweb.model.FaqModel;
+import org.inayat.novo.ringelweb.model.GfBfDataModel;
 import org.inayat.novo.ringelweb.model.HelpTextModel;
 import org.inayat.novo.ringelweb.model.UserModel;
 import org.inayat.novo.ringelweb.service.UserService;
@@ -47,17 +53,17 @@ public class UserResource {
 	}
 	
 	
-/*	@POST
-	@Path("/signup")
+	@POST
+	@Path("/updategfbf")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response saveGfBfData(GfBfDataModel gfBfdataModel) {
 		System.out.println("Entered in resources|saveGfBfData.");
-		GfBfService service =new GfBfServiceImpl();
+		UserService service =new UserServiceImpl();
 		gfBfdataModel = service.doSaveGfBfData(gfBfdataModel);
 		return	Response.status(Status.CREATED).entity(gfBfdataModel).build();
 		
 	}
-	*/
+	
 	
 	
 	@GET
@@ -78,6 +84,27 @@ public class UserResource {
 		UtilityService service=new UtilityServiceImpl();
 		HelpTextModel model= service.getHelpText();
 		return	Response.status(Status.CREATED).entity(model).build();
+	}
+	
+	@GET
+	@Path("/getFaq")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<FaqModel> getFaq() {
+		System.out.println("Entered in resourcegetFAq.");
+		UserService service=new UserServiceImpl();
+		List<FaqModel> list= service.getFaqService();
+		return	list;
+	}
+	
+	
+	@GET
+	@Path("/getCelebrationDetails")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCelebrationModel() throws ParseException {
+		System.out.println("Entered in getCelebrationModel.");
+		UtilityService service=new UtilityServiceImpl() ;   
+	    CelebrationModel model= service.getCelebration();
+	    return	Response.status(Status.CREATED).entity(model).build();
 	}
 	
 	

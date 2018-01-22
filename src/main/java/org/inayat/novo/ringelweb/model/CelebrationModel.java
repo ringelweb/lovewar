@@ -1,18 +1,17 @@
 package org.inayat.novo.ringelweb.model;
 
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name = "show_text_table")
-@Table(name = "show_text_table")
-public class ShowCelebrationModel {
+@Entity(name = "celebration_table")
+@Table(name = "celebration_table")
+public class CelebrationModel {
 
 	@Id
 	private int id;
 	private String celebrationDayName;
-	private Date celebrationDayDate;
+	private String celebrationDayDate;
 	private String celebrationText;
 	private String returnedMsg;
 	private String exception;
@@ -52,11 +51,11 @@ public class ShowCelebrationModel {
 	public void setCelebrationDayName(String celebrationDayName) {
 		this.celebrationDayName = celebrationDayName;
 	}
-	
-	public Date getCelebrationDayDate() {
+
+	public String getCelebrationDayDate() {
 		return celebrationDayDate;
 	}
-	public void setCelebrationDayDate(Date celebrationDayDate) {
+	public void setCelebrationDayDate(String celebrationDayDate) {
 		this.celebrationDayDate = celebrationDayDate;
 	}
 	public String getCelebrationText() {

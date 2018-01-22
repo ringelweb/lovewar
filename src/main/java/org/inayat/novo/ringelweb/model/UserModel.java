@@ -3,7 +3,7 @@ package org.inayat.novo.ringelweb.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "user_table")
 public class UserModel {
 @Id
+@GeneratedValue
 private int id;	
 private	String fname;
 private	String lname;

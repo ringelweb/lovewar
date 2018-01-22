@@ -1,6 +1,7 @@
 package org.inayat.novo.ringelweb.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 @Table(name = "helpText_table")
 public class HelpTextModel {
 	@Id
+	@GeneratedValue
 	private int id;
 	private String disclaimerOnSignupPage;
 	private String disclaimerOnPartnerPage;

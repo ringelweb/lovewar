@@ -1,12 +1,14 @@
 package org.inayat.novo.ringelweb.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity(name = "gfbfdata_table")
 @Table(name = "gfbfdata_table")
 public class GfBfDataModel {
-	private String id;
+	@Id
+	private int id;
 	private String name;
 	private int    age;
 	private String sex;
@@ -15,7 +17,15 @@ public class GfBfDataModel {
 	private String exception;
 	private Boolean success;
 	
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getException() {
 		return exception;
 	}
@@ -32,13 +42,6 @@ public class GfBfDataModel {
 		this.returnedmsg = returnedmsg;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
