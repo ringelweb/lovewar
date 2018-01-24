@@ -6,6 +6,7 @@ import org.inayat.novo.ringelweb.dao.UserDao;
 import org.inayat.novo.ringelweb.daoImpl.UserDaoImpl;
 import org.inayat.novo.ringelweb.model.FaqModel;
 import org.inayat.novo.ringelweb.model.GfBfDataModel;
+import org.inayat.novo.ringelweb.model.MessageModel;
 import org.inayat.novo.ringelweb.model.UserModel;
 import org.inayat.novo.ringelweb.service.UserService;
 
@@ -52,6 +53,15 @@ public class UserServiceImpl implements UserService {
 		return list;
 	
 
+	}
+
+	@Override
+	public MessageModel sendMessage(MessageModel message) {
+		System.out.println("Entered in userSignUpServiceImpl.send message.");
+	    UserDao dao=new UserDaoImpl();
+		message.setCreatedon(new Date());
+	    message=dao.sendMessage(message);
+	    return message;
 	}
 	
 	

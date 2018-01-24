@@ -21,6 +21,7 @@
  			<mapping class="org.inayat.novo.ringelweb.model.GfBfDataModel"/>
  			<mapping class="org.inayat.novo.ringelweb.model.FaqModel"/>
  			<mapping class="org.inayat.novo.ringelweb.model.CelebrationModel"/>
+ 			<mapping class="org.inayat.novo.ringelweb.model.MessageModel"/>
  		
     </session-factory>
 </hibernate-configuration>

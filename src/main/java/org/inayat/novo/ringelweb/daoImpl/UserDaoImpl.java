@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 import org.inayat.novo.ringelweb.dao.UserDao;
 import org.inayat.novo.ringelweb.model.FaqModel;
 import org.inayat.novo.ringelweb.model.GfBfDataModel;
+import org.inayat.novo.ringelweb.model.MessageModel;
 import org.inayat.novo.ringelweb.model.UserModel;
 
 public class UserDaoImpl implements UserDao {
@@ -133,12 +134,12 @@ public class UserDaoImpl implements UserDao {
 			query.setParameter("username", username);
 			query.setParameter("secretans", secretans);
 			List<String> list = query.list();
+			if(list.size()>0) {
 			password = list.get(0);
-			return password;
+			}else password= "User '"+username+"' Not Found!"; 
 		} catch (HibernateException e) {
 			if (session.getTransaction() != null) {
 				session.getTransaction().rollback();
-				return password;
 			}
 		} finally {
 			session.close();
@@ -205,6 +206,33 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 		return list;
+	
+	}
+
+	@Override
+	public MessageModel sendMessage(MessageModel message) {
+
+		System.out.println("Entered in userDaoImpl:send Message.");
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		session.beginTransaction();
+
+		try {
+			Integer	generatedId =(Integer) session.save(message);
+			message.setMsgid(generatedId);
+			session.getTransaction().commit();
+			message.setSuccess(true);
+			message.setReturnedMsg("Message Sent Successfully!");
+		} catch (Exception e) {
+			message.setSuccess(false);
+			message.setException(e.toString());
+			message.setReturnedMsg("Error sending message:cause-exception");
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return message;
+
 	
 	}
 
