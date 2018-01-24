@@ -18,6 +18,7 @@ import org.inayat.novo.ringelweb.model.FaqModel;
 import org.inayat.novo.ringelweb.model.GfBfDataModel;
 import org.inayat.novo.ringelweb.model.HelpTextModel;
 import org.inayat.novo.ringelweb.model.MessageModel;
+import org.inayat.novo.ringelweb.model.ReportUserModel;
 import org.inayat.novo.ringelweb.model.UserModel;
 import org.inayat.novo.ringelweb.service.UserService;
 import org.inayat.novo.ringelweb.service.UtilityService;
@@ -110,11 +111,23 @@ public class UserResource {
 		@POST
 		@Path("/sendMessage")
 		@Consumes(MediaType.APPLICATION_JSON)
-		public Response Signup(MessageModel message) {
+		public Response SendMessage(MessageModel message) {
 			System.out.println("Entered in resources|Sendmessage.");
 			UserService service=new UserServiceImpl();
 			message=service.sendMessage(message);
 			return	Response.status(Status.CREATED).entity(message).build();
+			
+			
+		}
+		
+		@POST
+		@Path("/report")
+		@Consumes(MediaType.APPLICATION_JSON)
+		public Response reportAbuse(ReportUserModel model) {
+			System.out.println("Entered in resources|report.");
+			UtilityService service=new UtilityServiceImpl();
+			model=service.reportUser(model);
+			return	Response.status(Status.CREATED).entity(model).build();
 			
 			
 		}

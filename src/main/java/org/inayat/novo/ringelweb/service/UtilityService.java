@@ -5,11 +5,15 @@ import java.util.Date;
 
 import org.inayat.novo.ringelweb.model.CelebrationModel;
 import org.inayat.novo.ringelweb.model.HelpTextModel;
+import org.inayat.novo.ringelweb.model.ReportUserModel;
 
 public interface UtilityService {
 	public HelpTextModel getHelpText();
 
+	public ReportUserModel reportUser(ReportUserModel model);
+
 	public CelebrationModel getCelebration() throws ParseException;
-	String parseDate(Date date);
+
+	public String parseDate(Date date);
 
 }

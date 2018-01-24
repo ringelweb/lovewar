@@ -136,7 +136,7 @@ public class UserDaoImpl implements UserDao {
 			List<String> list = query.list();
 			if(list.size()>0) {
 			password = list.get(0);
-			}else password= "User '"+username+"' Not Found!"; 
+			}else password= "User '"+username+"' Not Found!";  
 		} catch (HibernateException e) {
 			if (session.getTransaction() != null) {
 				session.getTransaction().rollback();

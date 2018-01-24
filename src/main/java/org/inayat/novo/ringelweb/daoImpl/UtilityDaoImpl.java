@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import org.inayat.novo.ringelweb.dao.UtilityDao;
 import org.inayat.novo.ringelweb.model.CelebrationModel;
 import org.inayat.novo.ringelweb.model.HelpTextModel;
+import org.inayat.novo.ringelweb.model.ReportUserModel;
 
 public class UtilityDaoImpl implements UtilityDao {
 
@@ -76,6 +77,53 @@ public class UtilityDaoImpl implements UtilityDao {
 		}
 		return model;
 	
+	}
+
+	@Override
+	public ReportUserModel reportByRegisteredUser(ReportUserModel model) {
+		System.out.println("Entered in utilityDaoImpl:report user|registered user.");
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		session.beginTransaction();
+		try {
+			Integer	generatedId =(Integer) session.save(model);
+			model.setId(generatedId);
+			session.getTransaction().commit();
+			model.setSuccess(true);
+			model.setReturnedMsg("reported  Successfully!");
+		} catch (Exception e) {
+			model.setSuccess(false);
+			model.setException(e.toString());
+			model.setReturnedMsg("Error reporting:cause-exception");
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return model;
+	}
+
+	@Override
+	public ReportUserModel reportByUnregisteredUser(ReportUserModel model) {
+		
+		System.out.println("Entered in utilityDaoImpl:report user|unregistered user.");
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		session.beginTransaction();
+		try {
+			Integer	generatedId =(Integer) session.save(model);
+			model.setId(generatedId);
+			session.getTransaction().commit();
+			model.setSuccess(true);
+			model.setReturnedMsg("Reported  Successfully!");
+		} catch (Exception e) {
+			model.setSuccess(false);
+			model.setException(e.toString());
+			model.setReturnedMsg("Error reporting:cause-exception");
+		} finally {
+			session.close();
+			factory.close();
+		}
+		return model;
 	}
 
 }
