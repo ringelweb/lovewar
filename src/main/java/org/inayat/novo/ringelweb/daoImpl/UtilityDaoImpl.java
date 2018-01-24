@@ -51,6 +51,7 @@ public class UtilityDaoImpl implements UtilityDao {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 		CelebrationModel model = new CelebrationModel();
+		model.setCelebrationDayDate(currentDate);
 		try {
 			session.beginTransaction();
 			String hql = "from celebration_table where celebrationDayDate=:celebrationDayDate";
